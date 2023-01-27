@@ -3,10 +3,14 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BigStar.Pages.Binding
 {
-    public class ToModelModel : PageModel
+  [BindProperties(SupportsGet = true)]
+  public class ToModelModel : PageModel
+  {
+    public string CardName { get; set; }
+    public decimal? OriginalPrice { get; set; }
+    public BigStar.Models.CollectibleCard CurrentCard { get; set; }
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
+  }
 }

@@ -3,10 +3,13 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace BigStar.Pages.Binding
 {
-    public class ToMethodModel : PageModel
+  [BindProperties(SupportsGet = true)]
+  public class ToMethodModel : PageModel
+  {
+    public string Message { get; set; } = "No message";
+    public void OnGet(BigStar.Models.CollectibleCard currentCard)
     {
-        public void OnGet()
-        {
-        }
+      Message = $"The {currentCard.CardName} card is in {currentCard.Condition} condition";
     }
+  }
 }
